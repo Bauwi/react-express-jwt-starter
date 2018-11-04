@@ -14,7 +14,7 @@ module.exports = app => {
     }
   });
 
-  // /* Log in */
+  /* Log in */
   app.post("/api/users/login", async (req, res) => {
     const body = _.pick(req.body, ["email", "password"]);
 
@@ -36,7 +36,7 @@ module.exports = app => {
     res.send(req.user);
   });
 
-  // /* Remove token on log out */
+  /* Remove token on log out */
   app.delete("/api/users/me/token", authenticate, async (req, res) => {
     try {
       await req.user.removeToken(req.token);

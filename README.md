@@ -54,8 +54,11 @@ To get rid of antd :
 npm uninstall antd react-app-rewired react-app-rewire-less
 ```
 
-Remove the config-overrides.js file in the client directory.
-Remove css import in index.css
+- Remove the config-overrides.js file in the client directory.
+
+- Remove css import in `index.css`
+
+- Replace `react-app-rewired` by `react-scripts` in your client `package.json`
 
 ## [](https://github.com/Bauwi/react-express-jwt-starter/blob/master/readme.md#built-with)Built With
 
