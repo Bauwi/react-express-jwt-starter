@@ -49,7 +49,7 @@ You will need to set a JWT_SECRET and MONGODB_URI env variables for your prod se
 - [React](https://reactjs.org/) - 16.6.0 - The web framework used
 - [Redux](https://redux.js.org/) - 5.0.6 - Predictable state container for JavaScript apps
 - [Express](http://expressjs.com/) - 4.15.4 - Web framework for Node.js
--     [React-router](https://reacttraining.com/react-router/core/guides/philosophy)  - 4.3.1 - Client-side routing
+- [React-router](https://reacttraining.com/react-router/core/guides/philosophy) - 4.3.1 - Client-side routing
 - [Antd](https://ant.design/docs/spec/introduce) - 3.1.3 - Components Library
 
 ## [](https://github.com/Bauwi/react-express-jwt-starter/blob/master/readme.md#contributing)Contributing
