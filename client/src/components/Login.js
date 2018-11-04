@@ -7,19 +7,30 @@ import { startLogin } from "../actions/auth";
 
 import CredentialsForm from "./lib/CredentialsForm";
 
+const Main = styled.main`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+`;
+
 const FormWrapper = styled.div`
   align-items: center;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  height: 90vh;
+
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 1rem 3rem;
+  width: 350px;
 `;
 
 export class Login extends Component {
   render() {
     const { loginHasErrored } = this.props;
     return (
-      <div>
+      <Main>
         <FormWrapper>
           <CredentialsForm
             title="Login"
@@ -33,7 +44,7 @@ export class Login extends Component {
             }
           />
         </FormWrapper>
-      </div>
+      </Main>
     );
   }
 }

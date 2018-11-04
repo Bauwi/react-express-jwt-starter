@@ -7,31 +7,43 @@ import { startCreateAccount } from "../actions/auth";
 
 import CredentialsForm from "./lib/CredentialsForm";
 
-const FormWrapper = styled.div`
+const Main = styled.main`
   align-items: center;
   display: flex;
   justify-content: center;
   height: 90vh;
 `;
 
+const FormWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+  padding: 1rem 3rem;
+  width: 350px;
+`;
+
 export class Register extends Component {
   render() {
     const { registerHasErrored } = this.props;
     return (
-      <div>
+      <Main>
         <FormWrapper>
           <CredentialsForm
-            title="Register"
+            title="Sign up"
             handleSubmit={credentials =>
               this.props.startCreateAccount(credentials)
             }
             askUser
-            buttonText="Register"
+            buttonText="Sign up"
             footer={<Link to="/">I have an account</Link>}
             serverError={registerHasErrored && "This account already exists."}
           />
         </FormWrapper>
-      </div>
+      </Main>
     );
   }
 }

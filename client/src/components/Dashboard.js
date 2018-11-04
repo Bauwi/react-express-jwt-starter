@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Divider } from "antd";
 
 const Dashboard = styled.main`
   padding: 1rem;
@@ -9,7 +10,9 @@ export default class DashboardComp extends Component {
   render() {
     return (
       <Dashboard>
-        <h1>Dashboard</h1>
+        <Divider orientation="left">
+          <h2>Dashboard</h2>
+        </Divider>
       </Dashboard>
     );
   }

@@ -15,9 +15,12 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   height: 10vh;
-  padding: 0 1rem;
+  padding: 2rem;
 `;
-const Name = styled.h1``;
+const Name = styled.p`
+  font-size: 4.6rem !important;
+  font-family: "Lobster Two", cursive !important;
+`;
 const Utils = styled.div`
   align-items: center;
   display: flex;
@@ -31,7 +34,7 @@ export class HeaderComp extends Component {
     return (
       <Header>
         <Wrapper>
-          <Name>Starter React Express JWT</Name>
+          <Name>Starter</Name>
           <Utils>
             <Username>{this.props.username}</Username>
             <Button shape="circle" onClick={this.props.startLogout}>

@@ -1,16 +1,9 @@
 import React from "react";
-import { Form, Icon, Input, Button, Checkbox } from "antd";
+import { Alert, Form, Icon, Input, Button, Checkbox, Divider } from "antd";
 import styled from "styled-components";
 
 const LoginForm = styled(Form)`
-  max-width: 300px;
-  width: 300px;
-`;
-
-const FormTitle = styled.h2`
-  font-size: 1.5rem;
-  padding: 3rem 0;
-  text-align: center;
+  width: 100%;
 `;
 
 const LoginFormForgot = styled.a`
@@ -26,7 +19,7 @@ const Footer = styled.footer`
 `;
 
 const ServerError = styled.p`
-  color: red;
+  padding: 1rem 0;
 `;
 
 const FormItem = Form.Item;
@@ -53,8 +46,14 @@ class CredentialsForm extends React.Component {
     } = this.props;
     return (
       <LoginForm onSubmit={this.handleSubmit} className="login-form">
-        <FormTitle>{title}</FormTitle>
-        <ServerError>{serverError}</ServerError>
+        <Divider>
+          <h3>{title}</h3>
+        </Divider>
+        {serverError && (
+          <ServerError>
+            <Alert message={serverError} type="error" />
+          </ServerError>
+        )}
         {askUser && (
           <FormItem>
             {getFieldDecorator("username", {
@@ -112,6 +111,8 @@ class CredentialsForm extends React.Component {
           <StyledButton type="primary" htmlType="submit" loading={isLoading}>
             {buttonText}
           </StyledButton>
+          <Divider />
+
           <Footer>{this.props.footer}</Footer>
         </FormItem>
       </LoginForm>

@@ -5,14 +5,20 @@ const Header = styled.header`
   align-items: center;
   display: flex;
   height: 10vh;
-  padding: 0 1rem;
+  padding: 2rem;
+`;
+const Name = styled.p`
+  color: grey;
+  font-size: 4.6rem !important;
+  font-family: "Lobster Two", cursive !important;
+  font-weight: 100;
 `;
 
 export default class PublicHeader extends Component {
   render() {
     return (
       <Header>
-        <h1>Starter</h1>
+        <Name>Starter</Name>
       </Header>
     );
   }
