@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 After cloning the repo:
 
-install node modules:
+install node modules in the root directory AND in the client directory:
 
 ```
 npm install
