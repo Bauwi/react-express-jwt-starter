@@ -28,7 +28,7 @@ Run the local MongoDB specifying the dbPath for mongod to use as a data director
 ./mongod --dbpath ~/DATA_DIRECTORY_PATH
 ```
 
-Start the webpack development server and the Express server
+Start the webpack development server and the Express server with this single command. From the root directory :
 
 ```
 npm run dev
