@@ -74,7 +74,7 @@ npm uninstall antd react-app-rewired react-app-rewire-less
 
 ## [](https://github.com/Bauwi/react-express-jwt-starter/blob/master/readme.md#contributing)Contributing
 
-welcomed.
+Just a starter.
 
 ## [](https://github.com/Bauwi/react-express-jwt-starter/blob/master/readme.md#authors)Authors
 
