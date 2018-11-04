@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { startLogout } from "../actions/auth";
+import Icon from "antd/lib/icon";
+import Button from "antd/lib/button";
+
+import { startLogout } from "../../actions/auth";
 
 const Header = styled.nav`
-  background: black;
   color: grey;
 `;
 const Wrapper = styled.div`
@@ -17,9 +19,11 @@ const Wrapper = styled.div`
 `;
 const Name = styled.h1``;
 const Utils = styled.div`
-  a {
-    color: grey;
-  }
+  align-items: center;
+  display: flex;
+`;
+const Username = styled.p`
+  margin-right: 1rem;
 `;
 
 export class HeaderComp extends Component {
@@ -27,9 +31,12 @@ export class HeaderComp extends Component {
     return (
       <Header>
         <Wrapper>
-          <Name>Emaily</Name>
+          <Name>Starter React Express JWT</Name>
           <Utils>
-            <button onClick={this.props.startLogout}>logout</button>
+            <Username>{this.props.username}</Username>
+            <Button shape="circle" onClick={this.props.startLogout}>
+              <Icon type="logout" />
+            </Button>
           </Utils>
         </Wrapper>
       </Header>
@@ -37,11 +44,15 @@ export class HeaderComp extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  username: state.auth.user.username
+});
+
 const mapDispatchToProps = dispatch => ({
   startLogout: () => dispatch(startLogout())
 });
 
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps
 )(HeaderComp);

@@ -1,51 +1,44 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 import { startCreateAccount } from "../actions/auth";
 
+import CredentialsForm from "./lib/CredentialsForm";
+
+const FormWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+`;
+
 export class Register extends Component {
-  state = {
-    email: "",
-    password: ""
-  };
-
-  onEmailChange = e => {
-    const { value } = e.target;
-    this.setState(() => ({ email: value }));
-  };
-
-  onPasswordChange = e => {
-    const { value } = e.target;
-    this.setState(() => ({ password: value }));
-  };
-
-  onSubmit = e => {
-    e.preventDefault();
-    const { email, password } = this.state;
-    this.props.startCreateAccount({ email, password });
-  };
-
   render() {
     return (
       <div>
-        <h1>Create an account</h1>
-        <form onSubmit={this.onSubmit}>
-          <input value={this.state.email} onChange={this.onEmailChange} />
-          <input value={this.state.password} onChange={this.onPasswordChange} />
-          <button>submit</button>
-        </form>
+        <FormWrapper>
+          <CredentialsForm
+            title="Register"
+            handleSubmit={credentials =>
+              this.props.startCreateAccount(credentials)
+            }
+            askUser
+            buttonText="Register"
+            footer={<Link to="/">I have an account</Link>}
+          />
+        </FormWrapper>
       </div>
     );
   }
 }
-
-const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
   startCreateAccount: credentials => dispatch(startCreateAccount(credentials))
 });
 
 export default connect(
-  mapStateToProps,
+  undefined,
   mapDispatchToProps
 )(Register);

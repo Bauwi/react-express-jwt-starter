@@ -1,39 +1,33 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 import { startLogin } from "../actions/auth";
 
+import CredentialsForm from "./lib/CredentialsForm";
+
+const FormWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90vh;
+`;
+
 export class Login extends Component {
-  state = {
-    email: "",
-    password: ""
-  };
-
-  onEmailChange = e => {
-    const { value } = e.target;
-    this.setState(() => ({ email: value }));
-  };
-
-  onPasswordChange = e => {
-    const { value } = e.target;
-    this.setState(() => ({ password: value }));
-  };
-
-  onSubmit = e => {
-    e.preventDefault();
-    const { email, password } = this.state;
-    this.props.startLogin({ email, password });
-  };
-
   render() {
     return (
       <div>
-        <h1>Login</h1>
-        <form onSubmit={this.onSubmit}>
-          <input value={this.state.email} onChange={this.onEmailChange} />
-          <input value={this.state.password} onChange={this.onPasswordChange} />
-          <button>submit</button>
-        </form>
+        <FormWrapper>
+          <CredentialsForm
+            title="Login"
+            handleSubmit={credentials => this.props.startLogin(credentials)}
+            buttonText="Log in"
+            forgotPassword
+            footer={<Link to="/register">register now!</Link>}
+          />
+        </FormWrapper>
       </div>
     );
   }

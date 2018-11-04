@@ -4,7 +4,7 @@ const { authenticate } = require("../middleware/authenticate");
 
 module.exports = app => {
   app.post("/api/users", async (req, res) => {
-    const user = new User(_.pick(req.body, ["email", "password"]));
+    const user = new User(_.pick(req.body, ["email", "password", "username"]));
     try {
       await user.save();
       const token = await user.generateAuthToken();
