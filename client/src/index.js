@@ -10,7 +10,7 @@ import Loader from "./components/Loader";
 
 import { login } from "./actions/auth";
 
-const user = JSON.parse(sessionStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("user"));
 
 const store = configureStore();
 

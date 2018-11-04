@@ -17,6 +17,7 @@ const FormWrapper = styled.div`
 
 export class Login extends Component {
   render() {
+    const { loginHasErrored } = this.props;
     return (
       <div>
         <FormWrapper>
@@ -26,6 +27,10 @@ export class Login extends Component {
             buttonText="Log in"
             forgotPassword
             footer={<Link to="/register">register now!</Link>}
+            isLoading={this.props.loginIsLoading}
+            serverError={
+              loginHasErrored && "Sorry, Your email or password is invalid."
+            }
           />
         </FormWrapper>
       </div>
@@ -33,11 +38,16 @@ export class Login extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  loginHasErrored: state.auth.loginHasErrored,
+  loginIsLoading: state.auth.loginIsLoading
+});
+
 const mapDispatchToProps = dispatch => ({
   startLogin: credentials => dispatch(startLogin(credentials))
 });
 
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps
 )(Login);

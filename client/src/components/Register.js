@@ -16,6 +16,7 @@ const FormWrapper = styled.div`
 
 export class Register extends Component {
   render() {
+    const { registerHasErrored } = this.props;
     return (
       <div>
         <FormWrapper>
@@ -27,6 +28,7 @@ export class Register extends Component {
             askUser
             buttonText="Register"
             footer={<Link to="/">I have an account</Link>}
+            serverError={registerHasErrored && "This account already exists."}
           />
         </FormWrapper>
       </div>
@@ -34,11 +36,16 @@ export class Register extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  registerHasErrored: state.auth.registerHasErrored,
+  registerIsLoading: state.auth.registerIsLoading
+});
+
 const mapDispatchToProps = dispatch => ({
   startCreateAccount: credentials => dispatch(startCreateAccount(credentials))
 });
 
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps
 )(Register);

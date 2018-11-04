@@ -25,6 +25,10 @@ const Footer = styled.footer`
   justify-content: center;
 `;
 
+const ServerError = styled.p`
+  color: red;
+`;
+
 const FormItem = Form.Item;
 
 class CredentialsForm extends React.Component {
@@ -39,10 +43,18 @@ class CredentialsForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { buttonText, askUser, title, forgotPassword } = this.props;
+    const {
+      buttonText,
+      askUser,
+      title,
+      forgotPassword,
+      serverError,
+      isLoading
+    } = this.props;
     return (
       <LoginForm onSubmit={this.handleSubmit} className="login-form">
         <FormTitle>{title}</FormTitle>
+        <ServerError>{serverError}</ServerError>
         {askUser && (
           <FormItem>
             {getFieldDecorator("username", {
@@ -97,7 +109,7 @@ class CredentialsForm extends React.Component {
           {forgotPassword && (
             <LoginFormForgot href="#">Forgot password</LoginFormForgot>
           )}
-          <StyledButton type="primary" htmlType="submit">
+          <StyledButton type="primary" htmlType="submit" loading={isLoading}>
             {buttonText}
           </StyledButton>
           <Footer>{this.props.footer}</Footer>
