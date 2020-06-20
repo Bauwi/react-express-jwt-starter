@@ -7,7 +7,6 @@ import PrivateHeader from '../common/components/Headers/PrivateHeader';
 export const PrivateRoute = ({
   isAuthenticated,
   component: Component,
-  // get the rest of the props
   ...rest
 }) => (
   <Route

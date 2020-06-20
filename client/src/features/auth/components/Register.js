@@ -1,11 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { startCreateAccount } from '../actions';
 
 import CredentialsForm from 'common/components/CredentialsForm';
+
+const Register = () => {
+  const dispatch = useDispatch();
+  const registerHasErrored = useSelector(
+    (state) => state.auth.registerHasErrored
+  );
+
+  const handleRegister = (credentials) => {
+    dispatch(startCreateAccount(credentials));
+  };
+
+  return (
+    <Main>
+      <FormWrapper>
+        <CredentialsForm
+          title="Sign up"
+          handleSubmit={(credentials) => handleRegister(credentials)}
+          askUser
+          buttonText="Sign up"
+          footer={<Link to="/">I have an account</Link>}
+          serverError={registerHasErrored && 'This account already exists.'}
+        />
+      </FormWrapper>
+    </Main>
+  );
+};
+export default Register;
 
 const Main = styled.main`
   align-items: center;
@@ -25,37 +52,3 @@ const FormWrapper = styled.div`
   padding: 1rem 3rem;
   width: 350px;
 `;
-
-export class Register extends Component {
-  render() {
-    const { registerHasErrored } = this.props;
-    return (
-      <Main>
-        <FormWrapper>
-          <CredentialsForm
-            title="Sign up"
-            handleSubmit={(credentials) =>
-              this.props.startCreateAccount(credentials)
-            }
-            askUser
-            buttonText="Sign up"
-            footer={<Link to="/">I have an account</Link>}
-            serverError={registerHasErrored && 'This account already exists.'}
-          />
-        </FormWrapper>
-      </Main>
-    );
-  }
-}
-
-const mapStateToProps = (state) => ({
-  registerHasErrored: state.auth.registerHasErrored,
-  registerIsLoading: state.auth.registerIsLoading,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  startCreateAccount: (credentials) =>
-    dispatch(startCreateAccount(credentials)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
