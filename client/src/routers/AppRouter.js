@@ -7,8 +7,8 @@ import PublicRoute from './PublicRoute';
 
 import Login from 'features/auth/components/Login';
 import Register from 'features/auth/components/Register';
-import Dashboard from '../components/Dashboard';
-import NotFoundPage from '../components/NotFoundPage';
+import Dashboard from 'features/dashboard/components/Dashboard';
+import NotFoundPage from 'features/notFound/components/NotFoundPage';
 
 export const history = createHistory();
 

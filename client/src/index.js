@@ -1,16 +1,16 @@
-import "./index.css";
-import "normalize.css";
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import configureStore from "./store/configureStore";
+import './index.css';
+import 'normalize.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
 
-import AppRouter from "./routers/AppRouter";
-import Loader from "./components/Loader";
+import AppRouter from './routers/AppRouter';
+import Loader from 'common/components/Loaders/Loader';
 
-import { login } from "./actions/auth";
+import { login } from 'features/auth/actions';
 
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem('user'));
 
 const store = configureStore();
 
@@ -28,10 +28,10 @@ const jsx = (
 let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
-    ReactDOM.render(jsx, document.getElementById("root"));
+    ReactDOM.render(jsx, document.getElementById('root'));
     hasRendered = true;
   }
 };
 
-ReactDOM.render(<Loader />, document.getElementById("root"));
+ReactDOM.render(<Loader />, document.getElementById('root'));
 renderApp();
