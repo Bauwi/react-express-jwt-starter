@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Route, Redirect } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Route, Redirect } from 'react-router-dom';
 
-import PublicHeader from "../components/Headers/PublicHeader";
+import PublicHeader from '../common/components/Headers/PublicHeader';
 
 export const PublicRoute = ({
   isAuthenticated,
@@ -11,7 +11,7 @@ export const PublicRoute = ({
 }) => (
   <Route
     {...rest}
-    component={props =>
+    component={(props) =>
       isAuthenticated ? (
         <Redirect to="/dashboard" />
       ) : (
@@ -24,9 +24,9 @@ export const PublicRoute = ({
   />
 );
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    isAuthenticated: !!state.auth.user._id
+    isAuthenticated: !!state.auth.user._id,
   };
 };
 

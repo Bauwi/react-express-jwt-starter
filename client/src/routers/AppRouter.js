@@ -1,14 +1,14 @@
-import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
+import React from 'react';
+import { Router, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 
-import PrivateRoute from "./PrivateRoute";
-import PublicRoute from "./PublicRoute";
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
-import Login from "../components/Login";
-import Register from "../components/Register";
-import Dashboard from "../components/Dashboard";
-import NotFoundPage from "../components/NotFoundPage";
+import Login from 'features/auth/components/Login';
+import Register from 'features/auth/components/Register';
+import Dashboard from '../components/Dashboard';
+import NotFoundPage from '../components/NotFoundPage';
 
 export const history = createHistory();
 

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import styled from "styled-components";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import { startCreateAccount } from "../actions/auth";
+import { startCreateAccount } from '../actions';
 
-import CredentialsForm from "./lib/CredentialsForm";
+import CredentialsForm from 'common/components/CredentialsForm';
 
 const Main = styled.main`
   align-items: center;
@@ -34,13 +34,13 @@ export class Register extends Component {
         <FormWrapper>
           <CredentialsForm
             title="Sign up"
-            handleSubmit={credentials =>
+            handleSubmit={(credentials) =>
               this.props.startCreateAccount(credentials)
             }
             askUser
             buttonText="Sign up"
             footer={<Link to="/">I have an account</Link>}
-            serverError={registerHasErrored && "This account already exists."}
+            serverError={registerHasErrored && 'This account already exists.'}
           />
         </FormWrapper>
       </Main>
@@ -48,16 +48,14 @@ export class Register extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   registerHasErrored: state.auth.registerHasErrored,
-  registerIsLoading: state.auth.registerIsLoading
+  registerIsLoading: state.auth.registerIsLoading,
 });
 
-const mapDispatchToProps = dispatch => ({
-  startCreateAccount: credentials => dispatch(startCreateAccount(credentials))
+const mapDispatchToProps = (dispatch) => ({
+  startCreateAccount: (credentials) =>
+    dispatch(startCreateAccount(credentials)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

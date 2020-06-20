@@ -1,6 +1,0 @@
-export const LOGIN = "LOGIN";
-export const LOGOUT = "LOGOUT";
-export const LOGIN_HAS_ERRORED = "LOGIN_HAS_ERRORED";
-export const LOGIN_IS_LOADING = "LOGIN_IS_LOADING";
-export const REGISTER_HAS_ERRORED = "REGISTER_HAS_ERRORED";
-export const REGISTER_IS_LOADING = "REGISTER_IS_LOADING";
