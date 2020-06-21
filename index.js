@@ -1,8 +1,9 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const minify = require("express-minify");
-const compression = require("compression");
-require("./db/mongoose");
+import express from 'express';
+import bodyParser from 'body-parser';
+import minify from 'express-minify';
+import compression from 'compression';
+import './db/mongoose';
+import authRoutes from './routes/authRoutes';
 
 const app = express();
 
@@ -12,9 +13,9 @@ app.use(minify());
 app.use(compression());
 
 // api
-require("./routes/authRoutes")(app);
+authRoutes(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log("Server is up !");
+  console.log('Server is up !');
 });

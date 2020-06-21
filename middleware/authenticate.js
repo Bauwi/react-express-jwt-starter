@@ -1,9 +1,10 @@
-const { User } = require("./../models/user");
+// const { User } = require("./../models/user");
+import { User } from './../models/user';
 
-const authenticate = (req, res, next) => {
-  const token = req.header("x-auth");
+export const authenticate = (req, res, next) => {
+  const token = req.header('x-auth');
   User.findByToken(token)
-    .then(user => {
+    .then((user) => {
       if (!user) {
         return Promise.reject();
       }
@@ -11,9 +12,7 @@ const authenticate = (req, res, next) => {
       req.token = token;
       return next();
     })
-    .catch(e => {
+    .catch((e) => {
       res.status(401).send();
     });
 };
-
-module.exports = { authenticate };
